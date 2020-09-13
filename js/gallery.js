@@ -59,16 +59,17 @@ const closeModalBox = (event) => {
 
 const images = document.querySelectorAll(".gallery__image")
 
-const arrImages = []
-images.forEach(image => arrImages.push(image))
 
 const carousel = (event) => {
     if(lightBox.classList.contains("is-open")){
+        
+        const arrImages = []
+        images.forEach(image => arrImages.push(image))
+
         let currImageFromArray = arrImages.find(image => image.alt == img.alt)
         let currIndex = arrImages.indexOf(currImageFromArray)
         
         if(event.code == "ArrowRight"){
-            console.log(currIndex)
             if (currIndex == arrImages.length-1){
                 currIndex = 0
                 img.src = arrImages[currIndex].dataset.source
@@ -77,7 +78,8 @@ const carousel = (event) => {
             }
             img.src = arrImages[currIndex + 1].dataset.source
             img.alt = arrImages[currIndex + 1].alt
-        }else if(event.code == "ArrowLeft"){
+        }
+        else if(event.code == "ArrowLeft"){
             if (currIndex == 0){
                 currIndex = arrImages.length-1
                 img.src = arrImages[currIndex].dataset.source
