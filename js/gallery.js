@@ -31,14 +31,16 @@ for(const item of galleryItems){
 }
 
 const modalAction = (event) => {
-    let currentImage = event.target
-    lightBox.classList.toggle("is-open")
-
-    img.setAttribute("src", "")
-    img.setAttribute("alt", "")
-
-    img.setAttribute("alt", currentImage.getAttribute("alt"))
-    img.setAttribute("src", currentImage.dataset.source)
+    let currentImage = event.target;
+    if(currentImage.nodeName === "IMG"){
+        lightBox.classList.toggle("is-open")
+    
+        img.setAttribute("src", "")
+        img.setAttribute("alt", "")
+    
+        img.setAttribute("alt", currentImage.getAttribute("alt"))
+        img.setAttribute("src", currentImage.dataset.source)
+    }
 }
 
 const closeModal = () => {
